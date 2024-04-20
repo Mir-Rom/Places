@@ -1,0 +1,14 @@
+{
+	"name": "getimage",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"dev": "nodemon main.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.19.2"
+	}
+}
