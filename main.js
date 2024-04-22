@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 		return
 	}
 
-	const place = dataBase[code]
+	const place = JSON.parse(JSON.stringify(dataBase[code]))
 	place.image = `/images/${place.image}`
 	res.json(place)
 })
