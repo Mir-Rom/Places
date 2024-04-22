@@ -24,12 +24,6 @@ const dataBase = {
 app.use(express.json())
 app.use('/images', express.static('images'))
 app.get('/', (req, res) => {
-	const code = req.body.code
-	if (!dataBase[code]) {
-		res.status(404)
-		res.json({ error: 'Wrong code' })
-		return
-	}
 	const now = new Date()
 	if (
 		!(
@@ -41,10 +35,19 @@ app.get('/', (req, res) => {
 		res.json({ error: 'Time is up' })
 		return
 	}
+	const code = req.body.code
+	if (!dataBase[code]) {
+		res.status(404)
+		res.json({ error: 'Wrong code' })
+		return
+	}
+
 	const place = dataBase[code]
 	place.image = `/images/${place.image}`
 	res.json(place)
 })
-app.listen(PORT, () => {
-	console.log('Server listening on ' + PORT)
-})
+// app.listen(PORT, () => {
+// 	console.log('Server listening on ' + PORT)
+// })
+
+module.exports = app
