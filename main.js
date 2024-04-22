@@ -24,21 +24,21 @@ const dataBase = {
 app.use(express.json())
 app.use('/images', express.static('images'))
 app.get('/', (req, res) => {
-	const now = new Date()
-	if (
-		!(
-			(now.getHours() >= 8 && now.getHours() < 15) ||
-			(now.getHours() == 15 && now.getMinutes() <= 30)
-		)
-	) {
-		res.status(418)
-		res.json({ error: 'Time is up' })
-		return
-	}
+	// const now = new Date()
+	// if (
+	// 	!(
+	// 		(now.getHours() >= 8 && now.getHours() < 15) ||
+	// 		(now.getHours() == 15 && now.getMinutes() <= 30)
+	// 	)
+	// ) {
+	// 	res.status(418)
+	// 	res.json({ error: 'Time is up' })
+	// 	return
+	// }
 	const code = req.body.code
 	if (!dataBase[code]) {
 		res.status(404)
-		res.json({ error: 'Wrong code' })
+		res.json({ error: 1, message: 'Wrong code' })
 		return
 	}
 
